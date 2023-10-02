@@ -1,0 +1,8 @@
+.App{
+    font-family: "YEONGJUPunggiGinseng";
+}
+
+@font-face {
+    font-family: "YEONGJUPunggiGinseng";
+    src: url(/src/asset/fonts/YEONGJUPunggiGinseng.ttf);
+}
