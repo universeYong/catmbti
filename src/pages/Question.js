@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import {ProgressBar, Button} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import { QuestionData } from '../asset/data/questiondata';
+import { createSearchParams } from 'react-router-dom';
+
 
 
 const Question  = () => {
@@ -15,7 +17,6 @@ const Question  = () => {
     ])
     const navigate = useNavigate();
 
-    console.log('totalScore', totalScore);
 
     const handstyleClickButton = (no, type) => {
         const newScore = totalScore.map((s) =>
@@ -28,8 +29,20 @@ const Question  = () => {
         if(QuestionData.length !== questionNo + 1) {
             setQuestionNo(questionNo + 1);
         } else {
+            // mbti도출
+            const mbti = newScore.reduce(
+                (acc, curr) =>
+                    acc + (curr.score >= 2 ? curr.id.substring(0,1): curr.id.substring(1,2)),
+                    ""
+            
+            );
             //결과 페이지 이동
-            navigate("/result");
+            navigate({
+                pathname: "/result",
+                search: `?${createSearchParams({
+                    mbti: mbti,
+                })}`
+            });
         }
     // if( type === "EI") {
     //     // 기존 스코어에 더할 값을 계산 (기존의 값 + 배점)
