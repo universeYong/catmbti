@@ -1,26 +1,26 @@
 import React from 'react';
 // css-in-js
 import styled from 'styled-components';
-import PangImage from '../asset/kong.jpg';
+import PangImage from '../asset/House.jpg';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 
-const Home  = () => {
+const Home2  = () => {
     const navigate = useNavigate();
 
     const handClickButton = () => {
-        navigate('/question');
+        navigate('/question2');
         
     }
     return (
         <Wrapper>
-            <Header>예비집사 판별기</Header>
+            <Header>해리포터 인물 테스트</Header>
             <Contents>
-            <Title>나에게 맞는 주인님은?</Title>
+            <Title>나와 가장 닮은 해리포터 인물은?</Title>
             <LogoImage>
                 <img src={PangImage} className="rounded-circle" width={350} height={350} />
             </LogoImage>
-            <Desc>MBTI를 기반으로 하는 나랑 잘맞는 댕댕이 찾기!</Desc>
+            <Desc>나와 가장 닮은 해리포터 인물 찾기!</Desc>
             <Button style={{fontFamily: "YEONGJUPunggiGinseng"}} onClick={handClickButton}>테스트 시작하기</Button>
             </Contents>
         </Wrapper>
@@ -29,7 +29,7 @@ const Home  = () => {
 
 }
 
-export default Home;
+export default Home2;
 
 const Wrapper = styled.div`
     height: 100vh;

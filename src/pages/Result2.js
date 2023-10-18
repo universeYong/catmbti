@@ -1,12 +1,12 @@
 import React from 'react';
 // css-in-js
 import styled from 'styled-components';
-import PangImage from '../asset/kong.jpg';
+//import PangImage from '../asset/House.jpg';
 import Button from 'react-bootstrap/Button';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import {ResultData} from '../asset/data/resultdata'
+import {ResultData2} from '../asset/data/resultdata2'
 
-const Result  = () => {
+const Result2  = () => {
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const mbti = searchParams.get('mbti');
@@ -14,32 +14,37 @@ const Result  = () => {
     const [resultData, setResultData] = React.useState({});
 
     React.useEffect(()=>{
-        const result = ResultData.find((s) => s.best === mbti);
+        const result = ResultData2.find((s) => s.best === mbti);
         setResultData(result);
     },[mbti])
 
-    console.log(mbti)
- 
+     
     return (
     <Wrapper>
-        <Header>예비집사 판별기</Header>
+        <Header>해리포터 인물 테스트</Header>
         <Contents>
-        <Title>결과 보기</Title>
+        <Title> 결과 </Title>
         <LogoImage>
             <img src={resultData.image} className="rounded-circle" width={350} height={350} />
         </LogoImage>
-        <Desc>예비 집사님과 찰떡궁합인 댕댕이는? {resultData.name}입니다.</Desc>
+        <Desc>나에게 잘 맞는 해리포터 인물은 {resultData.name}입니다.
+        </Desc>
+        <Desc>
+            유형 설명
+        </Desc>
+        <Contents>
+        {resultData.desc}
+        </Contents>
         <Button style={{fontFamily: "YEONGJUPunggiGinseng"}} onClick={()=>navigate("/")}>
             테스트 다시하기
             </Button>
         </Contents>
     </Wrapper>
     )
-
-
+   
 }
 
-export default Result;
+export default Result2;
 
 const Wrapper = styled.div`
     height: 100vh;
@@ -59,6 +64,8 @@ const Contents = styled.div`
     justify-content: center; 
     align-items: center;
     flex-direction: column;
+    white-space: pre-line;
+    text-align: center;
 `
 
 const Title = styled.div`

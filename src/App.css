@@ -1,5 +1,6 @@
 .App{
     font-family: "YEONGJUPunggiGinseng";
+    white-space: pre-line;
 }
 
 @font-face {
